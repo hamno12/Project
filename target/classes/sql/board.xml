@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="board">
+	<select id="selectBoardList"
+		resultType="com.iTeyes.Spring.vo.BoardVo"
+		parameterType="java.util.HashMap">
+		SELECT
+		`BOARD_GROUP_NO`,
+		`BOARD_NO`,
+		`BOARD_TITLE`,
+		`BOARD_CONTENTS`,
+		`REGIST_DATE`,
+		`LAST_DATE`,
+		`COMPANY_NO`,
+		`USER_ID`,
+		`NOTICE_YN`
+		FROM board
+	</select>
+	<select id="selectBoardOne"
+		resultType="com.iTeyes.Spring.vo.BoardVo"
+		parameterType="java.util.HashMap">
+		SELECT *
+		FROM board
+		Where `BOARD_NO`=#{boardNo}
+	</select>
+
+	<select id="boardDelete"
+		resultType="com.iTeyes.Spring.vo.BoardVo"
+		parameterType="java.util.HashMap">
+		Delete
+		FROM board
+		Where `BOARD_NO`=#{boardNo}
+	</select>
+
+	<select id="boardInsert"
+		resultType="com.iTeyes.Spring.vo.BoardVo"
+		parameterType="java.util.HashMap">
+		INSERT INTO  board(BOARD_TITLE,BOARD_CONTENTS)
+		VALUES  (#{boardTitle},#{boardContents});
+	</select>
+	
+	<select id="boardUpdate"
+		resultType="com.iTeyes.Spring.vo.BoardVo"
+		parameterType="java.util.HashMap">
+		Update board
+		Set BOARD_CONTENTS=#{boardContents}, BOARD_TITLE = #{boardTitle}
+		Where  BOARD_NO=#{boardNo}	
+	</select>
+
+</mapper>
+
