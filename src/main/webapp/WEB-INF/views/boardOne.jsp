@@ -7,7 +7,6 @@
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
@@ -35,41 +34,28 @@ th {
 				<col width="*" />
 			</colgroup>
 			<caption>게시글</caption>
-				<tbody>
-					<tr>
-				
-						<th>제목</th>
-						<td><a >'${vo.boardTitle}'</a></td>
-					</tr>
-					<tr>
-						<th>내용</th>
-						<td><a >${vo.boardContents}</a>
-						<td>
-					</tr>
-				</tbody>
+			<tbody>
+				<tr>
+					<th>제목</th>
+					<td><a>${vo.boardTitle}</a></td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td><a>${vo.boardContents}</a>
+					<td>
+				</tr>
+			</tbody>
 		</table>
-		<INPUT type='BUTTON' value='목록으로' onclick='history.back();'>
-		<INPUT type='BUTTON' value='삭제' onclick="boardDelete('${vo.boardNo}')">
+		<INPUT type='BUTTON' value='목록으로' onclick='history.back();'> 
+		<INPUT 	type='BUTTON' value='삭제' onclick="boardDelete('${vo.boardNo}')">
 	</form>
 </body>
 <script>
-	function boardInsert() {
-		var form = $('#form1')[0];
-		form.action = 'boardInsert';
-		form.submit();
-	}
-	function boardUpdate(boardNo) {
-		var form = $('#form1')[0];
-		form.action = 'boardUpdate';
-		form.boardNo.value = boardNo;
-		form.submit();
-	}
 	function boardDelete(boardNo) {
 		var form = $('#form1')[0];
 		form.action = 'boardDelete';
 		form.boardNo.value = boardNo;
 		form.submit();
 	}
-
-	</script>
+</script>
 </html>

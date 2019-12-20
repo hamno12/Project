@@ -29,9 +29,7 @@ th {
 	<form id="form1" name="form1" method="post"
 		style="background-color: inherit; border: 0px">
 		<input type="hidden" name="boardNo">
-		
-		
-		
+
 		<c:if test="${ vo.boardNo != null }">
 			<table class="board_view">
 				<colgroup>
@@ -41,21 +39,20 @@ th {
 				<caption>게시글</caption>
 				<tbody>
 					<th>제목</th>
-					<td><textarea name="boardTitle" >${vo.boardTitle}</textarea></td>
+					<td><textarea name="boardTitle">${vo.boardTitle}</textarea></td>
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><textarea rows="20" cols="30" name="boardContents"
-								>${vo.boardTitle}</textarea>
+						<td><textarea rows="20" cols="30" name="boardContents">${vo.boardTitle}</textarea>
 						<td>
 					</tr>
 				</tbody>
 			</table>
-			
-			<INPUT type='BUTTON' value='목록으로' onclick='history.back();'>
-			<INPUT type='BUTTON' value='수정' onclick="updateBoard('${vo.boardNo}')">
 
+			<INPUT type='BUTTON' value='목록으로' onclick='history.back();'>
+			<INPUT type='BUTTON' value='수정' onclick="boardWrite('${vo.boardNo}')">
 		</c:if>
+
 		<c:if test="${ vo.boardNo == null }">
 			<table>
 				<tbody>
@@ -70,23 +67,16 @@ th {
 					</tr>
 				</tbody>
 			</table>
-			
+
 			<INPUT type='BUTTON' value='목록으로' onclick='history.back();'>
-			<INPUT type='BUTTON' value='추가' onclick="boardInsert('${vo.boardNo}')">
+			<INPUT type='BUTTON' value='추가' onclick="boardWrite('${vo.boardNo}')">
 		</c:if>
 	</form>
-
-
 </body>
 <script>
-	function boardInsert() {
-		var form = $('#form1')[0];
-		form.action = 'boardInsert';
-		form.submit();
-	}
-	function updateBoard(boardNo){
+	function boardWrite(boardNo){
 		   var form = $('#form1')[0];
-		   form.action = 'boardUpdate';
+		   form.action = 'boardWrite';
 		   form.boardNo.value = boardNo;
 		   form.submit();
 		}	
